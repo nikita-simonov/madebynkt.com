@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Made by NKT — Apps</title>
+  <meta name="description" content="Apps by Made by NKT: released, in progress, planned. Privacy Policy & Terms of Use." />
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+      --line: rgba(255,255,255,.10);
+      --shadow: 0 14px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 800px at 12% -10%, rgba(120,255,210,.10), transparent 55%),
+        radial-gradient(1000px 700px at 100% 0%, rgba(120,180,255,.10), transparent 55%),
+        radial-gradient(900px 700px at 30% 110%, rgba(255,180,120,.08), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.35;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 36px 18px 80px;
+    }
+    header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 16px;
+      padding: 18px 18px 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .brand{
+      padding: 8px 0 18px;
+    }
+    .kicker{
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    h1{
+      margin: 8px 0 6px;
+      font-size: 28px;
+      letter-spacing: -0.02em;
+    }
+    .sub{
+      margin:0;
+      color: var(--muted);
+      max-width: 56ch;
+    }
+    .pillbar{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      padding: 14px 0 18px;
+      justify-content:flex-end;
+    }
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      display:inline-flex;
+      gap: 8px;
+      align-items:center;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .pill:hover{
+      background: rgba(255,255,255,.08);
+      transform: translateY(-1px);
+    }
+    main{
+      margin-top: 18px;
+      display:grid;
+      gap: 14px;
+    }
+    .section{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .section-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .section-title{
+      margin:0;
+      font-size: 15px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .count{
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .grid{
+      padding: 14px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+    .card{
+      grid-column: span 12;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      padding: 14px 14px 12px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    @media (min-width: 760px){
+      .card{ grid-column: span 6; }
+    }
+    .top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .name{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    .desc{
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .tag{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      white-space:nowrap;
+    }
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+    .btn{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      color: var(--text);
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .btn:hover{
+      background: rgba(255,255,255,.08);
+      transform: translateY(-1px);
+    }
+    .btn.primary{
+      background: rgba(255,255,255,.10);
+    }
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+      padding: 0 6px;
+    }
+    .fine a{ text-decoration: underline; text-underline-offset: 3px; }
+    .muted{ color: var(--muted); }
+    .dot{ opacity:.6; padding: 0 6px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="kicker">made by nkt</div>
+        <h1>Apps</h1>
+        <p class="sub">Список приложений: выпущенные, в разработке и в планах. Ниже — ссылки на App Store, Privacy Policy и Terms of Use для каждого приложения.</p>
+      </div>
+      <div class="pillbar">
+        <a class="pill" href="mailto:support@madebynkt.com" title="Support email">
+          ✉️ <span>support@madebynkt.com</span>
+        </a>
+        <a class="pill" href="https://made.by.nkt" target="_blank" rel="noopener">
+          📷 <span>Instagram</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="content"></main>
+
+    <footer>
+      <div class="fine">
+        © <span id="year"></span> Made by NKT <span class="dot">•</span>
+        <a href="/support.html">Support</a>
+      </div>
+      <div class="muted">Last updated: <span id="updated"></span></div>
+    </footer>
+  </div>
+
+  <script>
+    // ============================
+    // EDIT THIS LIST
+    // ============================
+    const APPS = [
+      // Released example
+      {
+        status: "released",
+        name: "Novus — Habit Tracker",
+        slug: "novus",
+        description: "Minimal habit tracker with streaks, calendar and insights.",
+        tag: "iOS",
+        appStoreUrl: "https://apps.apple.com/app/id0000000000",
+        privacyUrl: "/apps/novus/privacy.html",
+        termsUrl: "/apps/novus/terms.html"
+      },
+
+      // In progress example
+      {
+        status: "in_progress",
+        name: "DayPlate — Calories & Macros",
+        slug: "dayplate",
+        description: "Calorie & macro tracker. Clean UI, fast logging.",
+        tag: "In progress",
+        appStoreUrl: "",
+        privacyUrl: "/apps/dayplate/privacy.html",
+        termsUrl: "/apps/dayplate/terms.html"
+      },
+
+      // Planned example
+      {
+        status: "planned",
+        name: "Kairo — Crypto Tracker",
+        slug: "kairo",
+        description: "Crypto portfolio & market tracker with alerts.",
+        tag: "Planned",
+        appStoreUrl: "",
+        privacyUrl: "/apps/kairo/privacy.html",
+        termsUrl: "/apps/kairo/terms.html"
+      },
+    ];
+
+    const SECTIONS = [
+      { key: "released", title: "Released", note: "Published in the App Store" },
+      { key: "in_progress", title: "In progress", note: "Currently in development" },
+      { key: "planned", title: "Planned", note: "Roadmap ideas" },
+    ];
+
+    function el(tag, attrs = {}, children = []) {
+      const node = document.createElement(tag);
+      for (const [k, v] of Object.entries(attrs)) {
+        if (k === "class") node.className = v;
+        else if (k === "html") node.innerHTML = v;
+        else node.setAttribute(k, v);
+      }
+      (Array.isArray(children) ? children : [children]).forEach(ch => {
+        if (ch === null || ch === undefined) return;
+        node.appendChild(typeof ch === "string" ? document.createTextNode(ch) : ch);
+      });
+      return node;
+    }
+
+    function buildCard(app) {
+      const title = el("h3", { class: "name" }, app.name);
+      const desc = el("p", { class: "desc" }, app.description || "");
+      const left = el("div", {}, [title, desc]);
+
+      const tag = el("span", { class: "tag" }, app.tag || "");
+      const top = el("div", { class: "top" }, [left, tag]);
+
+      const actions = el("div", { class: "actions" });
+
+      // App Store button (only if URL exists)
+      if (app.appStoreUrl && app.appStoreUrl.trim().length > 0) {
+        actions.appendChild(
+          el("a", { class: "btn primary", href: app.appStoreUrl, target: "_blank", rel: "noopener" }, " App Store")
+        );
+      } else {
+        actions.appendChild(
+          el("span", { class: "btn", style: "opacity:.6; cursor: default;" }, "Coming soon")
+        );
+      }
+
+      // Privacy / Terms (always show, since you want per-app pages)
+      actions.appendChild(el("a", { class: "btn", href: app.privacyUrl }, "Privacy"));
+      actions.appendChild(el("a", { class: "btn", href: app.termsUrl }, "Terms"));
+
+      return el("div", { class: "card" }, [top, actions]);
+    }
+
+    function buildSection(sectionKey, titleText, apps) {
+      const section = el("section", { class: "section" });
+      const head = el("div", { class: "section-head" }, [
+        el("h2", { class: "section-title" }, titleText),
+        el("div", { class: "count" }, `${apps.length}`)
+      ]);
+      const grid = el("div", { class: "grid" }, apps.map(buildCard));
+      section.appendChild(head);
+      section.appendChild(grid);
+      return section;
+    }
+
+    const root = document.getElementById("content");
+    for (const s of SECTIONS) {
+      const apps = APPS.filter(a => a.status === s.key);
+      root.appendChild(buildSection(s.key, s.title, apps));
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("updated").textContent = new Date().toISOString().slice(0, 10);
+  </script>
+</body>
+</html>
